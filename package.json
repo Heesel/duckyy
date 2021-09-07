@@ -1,0 +1,16 @@
+{
+  "name": "duckyy",
+  "version": "v1.0",
+  "main": "index.js",
+  "author": "Hessel p",
+  "dependencies": {
+    "@discordjs/opus": "^0.6.0",
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "@discordjs/voice": "^0.6.0",
+    "discord-api-types": "^0.22.0",
+    "discord.js": "^13.1.0",
+    "libsodium-wrappers": "^0.7.9",
+    "opusscript": "^0.0.8",
+    "tweetnacl": "^1.0.3"
+  }
+}
