@@ -58,11 +58,11 @@ client.on('messageCreate', async message => { //called when user sends a message
       queue.textChannel.send(msg)
     })
     
-    .on("addSong", (queue, song) => {
-      let msg = `Playing \`${song.name}\` - \`${song.formattedDuration}\``
-      if (song.playlist) msg = `Playlist: ${song.playlist.name}\n${msg}`
-      queue.textChannel.send(msg)
-    })
+    // .on("addSong", (queue, song) => {
+    //   let msg = `Playing \`${song.name}\` - \`${song.formattedDuration}\``
+    //   if (song.playlist) msg = `Playlist: ${song.playlist.name}\n${msg}`
+    //   queue.textChannel.send(msg)
+    // })
       
     // .on("addList", (queue, song) => {
     //   let msg = `Playing \`${song.name}\` - \`${song.formattedDuration}\``
@@ -88,47 +88,6 @@ client.on('messageCreate', async message => { //called when user sends a message
     .on("error", (message, err) => message.channel.send(`An error encountered: ${err}`))
     console.log(status);
     client.login(config.token);
-
-
   
-  
-  
-  
-  
-  
-  
-  //   if(command == "play"){
-  //     if(!message.member.voice.channel)
-  //       return message.channel.send('You are not in a voice channel!');
-  //     if(!args[0])
-  //       return message.channel.send('Tell me which song I should play!');
-
-  //     client.distube.play(message, args.join(" "));
-  //     return message.channel.send("playing: "+args.join(" "));
-  // }
-  
-  //   if(command == "stop"){
-  //     const bot = message.guild.members.cache.get(client.user.id);
-  //     if(!message.member.voice.channel)
-  //       return message.channel.send('You are not in a voice channel!');
-  //     if(bot.voice.channel !== message.member.voice.channel)
-  //       return message.channel.send('You are not in the same voice channel as duckyy!');
-
-  //     client.distube.stop(message);
-  //     message.channel.send("⏹️");
-  // }
-  
-  // if (command == "help") {
-  //   const embed = new MessageEmbed()
-  //       .setTitle('List of available commands')
-  //       .setAuthor(`${client.user.tag}`)
-  //       .setColor('#ebba34')
-  //       .addFields({name: '-d help', value: 'Displays a list of commands'})
-  //       .addFields({name: '-d connect', value: 'Connect me to vc'})
-  //       .addFields({name: '-d play <name>', value: 'Play a song'})
-  //       .addFields({name: '-d play <song url>', value: 'Play a song'})
-  //       .addFields({name: '-d play next', value: 'Play the next song in queue'})
-  //   message.channel.send({ embeds: [embed] });
-  // }
 
 
