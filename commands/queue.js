@@ -8,7 +8,7 @@ module.exports = {
     run: async (client, message, args) => {
         const queue = client.distube.getQueue(message)
         if (!queue) return message.channel.send(`There is nothing playing!`)
-        console.log(queue)
+        if(queue.songs.length < 2) return message.channel.send(`Currently playing: \`${queue.songs[0].name}\` - \`${queue.songs[0].formattedDuration}\``)
         const q = queue.songs.map((song, i) => `${i === 0 ? "Playing:" : `${i}.`} ${song.name} - \`${song.formattedDuration}\``).join("\n")
 
         var result = [];
@@ -54,5 +54,14 @@ module.exports = {
         }
 
         paginationEmbed(message, pages, buttons, 100000)
+
+        /*for(let i=0; i<result.length; i++){
+            console.log(result[i]);
+
+            message.channel.send(`**Server Queue**\n${result[i]}`)
+        }*/
+        // console.log(res);
+
+        // console.log(q);
     }
 }
