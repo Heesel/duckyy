@@ -1,5 +1,5 @@
 const { ButtonPaginator } = require('@psibean/discord.js-pagination');
-
+const paginationEmbed = require('discordjs-button-pagination');
 const { MessageEmbed, MessageButton, Util } = require('discord.js');
 
 module.exports = {
@@ -42,18 +42,17 @@ module.exports = {
                         .setStyle('SUCCESS');
 
         const pages = [];
-        
+        const buttons = [previous, next];
+
         for (let i = 0; i < result.length; i++) {
             const pageEmbed = new MessageEmbed();
             pageEmbed
-            .setTitle(`This embed is index ${i}!`)
-            .setDescription(`That means it is page #${i + 1}`);
+            .setTitle(""+(i+1)+". Page")
+            .setDescription(result[i]);
             pages.push(pageEmbed);
         }
 
-        
-        // const buttonPaginator = new ButtonPaginator(interaction, pages);
-        // await buttonPaginator.send();
+        paginationEmbed(message, pages, buttons, 100000)
 
         /*for(let i=0; i<result.length; i++){
             console.log(result[i]);
