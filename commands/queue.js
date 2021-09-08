@@ -53,7 +53,7 @@ module.exports = {
             pages.push(pageEmbed);
         }
 
-        paginationEmbed(message, pages, buttons, 100000)
+        paginationEmbed(message, pages, buttons, 250000)
 
         /*for(let i=0; i<result.length; i++){
             console.log(result[i]);

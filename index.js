@@ -52,10 +52,16 @@ client.on('messageCreate', async message => { //called when user sends a message
 
     const status = queue => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filter || "Off"}\` | Loop: \`${queue.repeatMode ? queue.repeatMode === 2 ? "All Queue" : "This Song" : "Off"}\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``
     client.distube
-    .on("playSong", (queue, song) => {
-      let msg = `Playing \`${song.name}\` - \`${song.formattedDuration}\``
-      if (song.playlist) msg = `Playlist: ${song.playlist.name}\n${msg}`
-      queue.textChannel.send(msg)
+      .on("playSong", (queue, song) => {
+        if (song.playlist) {
+          let msg = `Playlist: ${song.playlist.name}\n${msg}`
+          queue.textChannel.send(msg)
+        } else {
+          let msg = `Playing \`${song.name}\` - \`${song.formattedDuration}\``
+          queue.textChannel.send(msg)
+        }
+      // if (song.playlist) msg = `Playlist: ${song.playlist.name}\n${msg}`
+      // queue.textChannel.send(msg)
     })
     
     // .on("addSong", (queue, song) => {
@@ -72,9 +78,6 @@ client.on('messageCreate', async message => { //called when user sends a message
     //   .on("addSong", (message, queue, song) => message.channel.send(
     //     `Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`
     // ))
-    // .on("playList", (message, queue, playlist, song) => message.channel.send(
-    //     `Play \`${playlist.title}\` playlist (${playlist.total_items} songs).\nRequested by: ${song.user}\nNow playing \`${song.name}\` - \`${song.formattedDuration}\`\n${status(queue)}`
-    // ))
     // .on("addList", (message, queue, playlist) => message.channel.send(
     //     `Added \`${playlist.title}\` playlist (${playlist.total_items} songs) to queue\n${status(queue)}`
     // ))
@@ -85,7 +88,7 @@ client.on('messageCreate', async message => { //called when user sends a message
     })
     // DisTubeOptions.searchSongs = true
     .on("searchCancel", message => message.channel.send(`Searching canceled`))
-    .on("error", (message, err) => message.channel.send(`An error encountered: ${err}`))
+    // .on("error", (message, err) => message.channel.send(`An error encountered: ${err}`))
     console.log(status);
     client.login(config.token);
   
