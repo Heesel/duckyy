@@ -1,4 +1,5 @@
-const paginationEmbed = require('discordjs-button-pagination');
+const { ButtonPaginator } = require('@psibean/discord.js-pagination');
+
 const { MessageEmbed, MessageButton, Util } = require('discord.js');
 
 module.exports = {
@@ -9,8 +10,6 @@ module.exports = {
         if (!queue) return message.channel.send(`There is nothing playing!`)
         const q = queue.songs.map((song, i) => `${i === 0 ? "Playing:" : `${i}.`} ${song.name} - \`${song.formattedDuration}\``).join("\n")
 
-        // const chunks = Discord.Util.splitMessage(queue);
-        // const embed = new Discord.MessageEmbed().setTitle(`queue`)
         var result = [];
         var a = "";
         var i=0;
@@ -32,26 +31,29 @@ module.exports = {
         }
 
         /*Creating the pagination*/
-        const button1 = new MessageButton()
+        const previous = new MessageButton()
                         .setCustomId('previousbtn')
                         .setLabel('Previous')
                         .setStyle('DANGER');
 
-        const button2 = new MessageButton()
+        const next = new MessageButton()
                         .setCustomId('nextbtn')
                         .setLabel('Next')
                         .setStyle('SUCCESS');
 
-        pages = [];
-        buttons = [button1, button2];
-        for(let i=0; i<result.length; i++){
-            pages.push(new MessageEmbed()
-                .setTitle(""+i+". page")
-                .setDescription(result[i])
-              );
+        const pages = [];
+        
+        for (let i = 0; i < result.length; i++) {
+            const pageEmbed = new MessageEmbed();
+            pageEmbed
+            .setTitle(`This embed is index ${i}!`)
+            .setDescription(`That means it is page #${i + 1}`);
+            pages.push(pageEmbed);
         }
 
-        paginationEmbed(pages, buttons, 12000)
+        
+        // const buttonPaginator = new ButtonPaginator(interaction, pages);
+        // await buttonPaginator.send();
 
         /*for(let i=0; i<result.length; i++){
             console.log(result[i]);
