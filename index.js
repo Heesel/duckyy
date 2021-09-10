@@ -52,9 +52,11 @@ client.on('messageCreate', async message => { //called when user sends a message
 
     const status = queue => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filter || "Off"}\` | Loop: \`${queue.repeatMode ? queue.repeatMode === 2 ? "All Queue" : "This Song" : "Off"}\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``
     client.distube
+      //This will be executed if a song just started playing
       .on("playSong", (queue, song) => {
         if (song.playlist) {
-          let msg = `Playlist: ${song.playlist.name}\n${msg}`
+          let currentSong = `Playing \`${song.name}\` - \`${song.formattedDuration}\``
+          let msg = `Playlist: ${song.playlist.name}\n${currentSong}`
           queue.textChannel.send(msg)
         } else {
           let msg = `Playing \`${song.name}\` - \`${song.formattedDuration}\``
@@ -63,12 +65,18 @@ client.on('messageCreate', async message => { //called when user sends a message
       // if (song.playlist) msg = `Playlist: ${song.playlist.name}\n${msg}`
       // queue.textChannel.send(msg)
     })
-    
-    // .on("addSong", (queue, song) => {
-    //   let msg = `Playing \`${song.name}\` - \`${song.formattedDuration}\``
-    //   if (song.playlist) msg = `Playlist: ${song.playlist.name}\n${msg}`
-    //   queue.textChannel.send(msg)
-    // })
+      //this will be executed if the user adds a song
+      .on("addSong", (queue, song) => {
+        if (song.playlist) {
+          let currentSong = `Added \`${song.name}\` - \`${song.formattedDuration}\``
+          let msg = `Playlist: ${song.playlist.name}\n${currentSong}`
+          queue.textChannel.send(msg)
+        } else {
+          let msg = `Added \`${song.name}\` - \`${song.formattedDuration}\` to the queue`
+          queue.textChannel.send(msg)
+        }
+      
+    })
       
     // .on("addList", (queue, song) => {
     //   let msg = `Playing \`${song.name}\` - \`${song.formattedDuration}\``
