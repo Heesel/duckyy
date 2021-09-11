@@ -9,7 +9,7 @@ module.exports = {
         .setAuthor(`${client.user.tag}`)
         .setColor('#ebba34')
         .addFields({name: '-help', value: 'Displays a list of commands'})
-        .addFields({name: '-play <song url>', value: 'Play a song'})
+        .addFields({name: '-play <song url or name>', value: 'Play a song'})
         .addFields({name: '-skip', value: 'Skip the current song' })
         .addFields({name: '-queue', value: 'See the current queue'})
     message.channel.send({ embeds: [embed] });
