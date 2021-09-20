@@ -14,7 +14,7 @@ client.aliases = new Discord.Collection()
 
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
-  client.user.setActivity({ type: "Custom", name: `Just vibing` })
+  client.user.setActivity({ type: "PLAYING", name: `your shitty music :)` })
   // const server = client.voice.connections.size
   // client.user.setActivity({ type: "PLAYING", name: `music on ${server} servers` })
 });
