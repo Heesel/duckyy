@@ -12,6 +12,7 @@ module.exports = {
         .addFields({name: '-play <song url or name>', value: 'Play a song'})
         .addFields({name: '-skip', value: 'Skip the current song' })
         .addFields({name: '-queue', value: 'See the current queue'})
+        .addFields({name: '-stop', value: 'Disconnect and clear queue'})
     message.channel.send({ embeds: [embed] });
     }
 }
