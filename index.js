@@ -62,8 +62,6 @@ client.on('messageCreate', async message => { //called when user sends a message
           let msg = `Playing \`${song.name}\` - \`${song.formattedDuration}\``
           queue.textChannel.send(msg)
         }
-      // if (song.playlist) msg = `Playlist: ${song.playlist.name}\n${msg}`
-      // queue.textChannel.send(msg)
     })
       //this will be executed if the user adds a song
       .on("addSong", (queue, song) => {
