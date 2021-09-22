@@ -35,6 +35,14 @@ fs.readdir("./commands/", (err, files) => {
 
 client.on('messageCreate', async message => { //called when user sends a message
   const prefix = config.prefix
+  if (message.content.includes('duckyy')) {
+      const chance = Math.floor(Math.random() * 11);
+      if (chance === 5) {
+        const messages = [":eyes:", "Talkin about me?", "I heard my name", "Yes?", "At your service!"]
+        const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+        message.channel.send(randomMessage)
+      }
+  }
   if (!message.content.startsWith(prefix)) return
   const args = message.content.slice(prefix.length).trim().split(/ +/g)
   const command = args.shift().toLowerCase()
