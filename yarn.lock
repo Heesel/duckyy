@@ -127,6 +127,11 @@
   dependencies:
     "miniget" "^4.2.1"
 
+"@psibean/discord.js-pagination@^3.0.5":
+  "integrity" "sha512-0bg4SD39tjBQkYnAobwXisYT0tDTBAOoBV7n9Di5Sb7P3mWhValUc/lMzT8DxjyB+HNdxDRJ8mh4CUVzfmBpqQ=="
+  "resolved" "https://registry.npmjs.org/@psibean/discord.js-pagination/-/discord.js-pagination-3.0.5.tgz"
+  "version" "3.0.5"
+
 "@sapphire/async-queue@^1.1.4":
   "integrity" "sha512-fFrlF/uWpGOX5djw5Mu2Hnnrunao75WGey0sP0J3jnhmrJ5TAPzHYOmytD5iN/+pMxS+f+u/gezqHa9tPhRHEA=="
   "resolved" "https://registry.npmjs.org/@sapphire/async-queue/-/async-queue-1.1.4.tgz"
@@ -390,7 +395,7 @@
   "resolved" "https://registry.npmjs.org/discord-api-types/-/discord-api-types-0.22.0.tgz"
   "version" "0.22.0"
 
-"discord.js@^12.5.0||^13.0.0-0||^13.1.0-0||^13.2.0-0", "discord.js@^13.1.0":
+"discord.js@^12.5.0||^13.0.0-0||^13.1.0-0||^13.2.0-0", "discord.js@^13.0.1", "discord.js@^13.1.0":
   "integrity" "sha512-gxO4CXKdHpqA+WKG+f5RNnd3srTDj5uFJHgOathksDE90YNq/Qijkd2WlMgTTMS6AJoEnHxI7G9eDQHCuZ+xDA=="
   "resolved" "https://registry.npmjs.org/discord.js/-/discord.js-13.1.0.tgz"
   "version" "13.1.0"
@@ -403,6 +408,13 @@
     "discord-api-types" "^0.22.0"
     "node-fetch" "^2.6.1"
     "ws" "^7.5.1"
+
+"discordjs-button-pagination@^2.0.0":
+  "integrity" "sha512-tvC6p468SVY2rBprMVAD/0Bq4xZBAsy/0iKAA+l1JfS0Cs0UNEdknvPsgMFRgLxzrj1VIV8qn0bWCRY9q0oq5Q=="
+  "resolved" "https://registry.npmjs.org/discordjs-button-pagination/-/discordjs-button-pagination-2.0.0.tgz"
+  "version" "2.0.0"
+  dependencies:
+    "discord.js" "^13.0.1"
 
 "distube@^3.0.0-beta.38":
   "integrity" "sha512-3Gli41VGfI5bk7XJOeN+ZMwTcEx4Vopj7xWJIewUU6m43Wo56y8ilNVqoOfgEz6Bin2PI54gIMHpMUQmLKA0cw=="
