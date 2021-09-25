@@ -28,7 +28,6 @@ module.exports = {
             pages.push(pageContent);
         }
 
-        /*Creating the pagination*/
         const previous = new MessageButton()
             .setCustomId('previousbtn')
             .setLabel('Previous')

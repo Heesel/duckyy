@@ -1,4 +1,4 @@
-const { Client, Intents, MessageEmbed } = require('discord.js'); //references to functions from discord
+const { Client, Intents, MessageEmbed } = require('discord.js');
 
 module.exports = {
     name: "help",

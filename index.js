@@ -1,8 +1,8 @@
-const { Client, Intents, MessageEmbed } = require('discord.js'); //references to functions from discord
+const { Client, Intents, MessageEmbed } = require('discord.js');
 const fs = require("fs")
 const DisTube = require("distube");
 const Discord = require("discord.js");
-const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, 'GUILD_VOICE_STATES'] }); //defining intents (permissions)
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES, 'GUILD_VOICE_STATES'] });
 const config = require("./config.json")
 
 client.config = require("./config.json")
@@ -15,8 +15,6 @@ client.aliases = new Discord.Collection()
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
   client.user.setActivity({ type: "PLAYING", name: `your shitty music :)` })
-  // const server = client.voice.connections.size
-  // client.user.setActivity({ type: "PLAYING", name: `music on ${server} servers` })
 });
 
 fs.readdir("./commands/", (err, files) => {
@@ -33,7 +31,7 @@ fs.readdir("./commands/", (err, files) => {
 
 
 
-client.on('messageCreate', async message => { //called when user sends a message
+client.on('messageCreate', async message => {
   const prefix = config.prefix
   if (message.content.includes('duckyy')) {
       const chance = Math.floor(Math.random() * 11);
@@ -60,7 +58,6 @@ client.on('messageCreate', async message => { //called when user sends a message
 
     const status = queue => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filter || "Off"}\` | Loop: \`${queue.repeatMode ? queue.repeatMode === 2 ? "All Queue" : "This Song" : "Off"}\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``
     client.distube
-      //This will be executed if a song just started playing
       .on("playSong", (queue, song) => {
         if (song.playlist) {
           let currentSong = `Playing \`${song.name}\` - \`${song.formattedDuration}\``
@@ -71,7 +68,6 @@ client.on('messageCreate', async message => { //called when user sends a message
           queue.textChannel.send(msg)
         }
     })
-      //this will be executed if the user adds a song
       .on("addSong", (queue, song) => {
         if (song.playlist) {
           let currentSong = `Added \`${song.name}\` - \`${song.formattedDuration}\``
@@ -84,23 +80,10 @@ client.on('messageCreate', async message => { //called when user sends a message
       
     })
       
-    // .on("addList", (queue, song) => {
-    //   let msg = `Playing \`${song.name}\` - \`${song.formattedDuration}\``
-    //   if (song.playlist) msg = `Playlist: ${song.playlist.name}\n${msg}`
-    //   queue.textChannel.send(msg)
-    // })
-    //   .on("addSong", (message, queue, song) => message.channel.send(
-    //     `Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`
-    // ))
-    // .on("addList", (message, queue, playlist) => message.channel.send(
-    //     `Added \`${playlist.title}\` playlist (${playlist.total_items} songs) to queue\n${status(queue)}`
-    // ))
-    // DisTubeOptions.searchSongs = true
     .on("searchResult", (message, result) => {
         let i = 0
         message.channel.send(`**Choose an option from below**\n${result.map(song => `**${++i}**. ${song.name} - \`${song.formattedDuration}\``).join("\n")}\n*Enter anything else or wait 60 seconds to cancel*`)
     })
-    // DisTubeOptions.searchSongs = true
     .on("searchCancel", message => message.channel.send(`Searching canceled`))
     // .on("error", (message, err) => message.channel.send(`An error encountered: ${err}`))
     console.log(status);
