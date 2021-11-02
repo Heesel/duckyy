@@ -1,11 +1,11 @@
 module.exports = {
     name: "stop",
-    aliases: ["disconnect", "leave"],
+    aliases: ["disconnect", "leave", "dc"],
     inVoiceChannel: true,
     run: async (client, message, args) => {
-        const queue = client.distube.getQueue(message)
+        const queue = client.player.getQueue(message.guild.id);
         if (!queue) return message.channel.send(`There is nothing in the queue right now!`)
-        client.distube.stop(message)
+        queue.stop();
         message.channel.send(`Stopped!`)
     }
 }

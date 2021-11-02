@@ -2,15 +2,15 @@ module.exports = {
     name: "skip",
     inVoiceChannel: true,
     run: async (client, message, args) => {
-        const queue = client.distube.getQueue(message)
+        let queue = client.player.getQueue(message.guild.id);
         if (!queue) return message.channel.send(`There is nothing in the queue right now!`)
-        if (queue.songs.length === 1) return message.channel.send("There is no song to skip.");
-        console.log('Log: ' + queue.songs.length);
+        if(queue.songs.length === 1) return message.channel.send("There is no song to skip")
         try {
-            client.distube.skip(message)
+            queue.skip();
             message.channel.send(`Skipped! Now playing:\n${queue.songs[0].name}`)
-        } catch (e) {
+        } catch(e) {
             message.channel.send(`${e}`)
         }
-    }
+        
+    }    
 }
