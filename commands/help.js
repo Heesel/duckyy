@@ -10,6 +10,7 @@ module.exports = {
         .setColor('#ebba34')
         .addFields({name: '-help', value: 'Displays a list of commands'})
         .addFields({name: '-play <song url or name>', value: 'Play a song'})
+        .addFields({name: '-playlist <url of playlist>', value: 'Play a playlist'})
         .addFields({name: '-skip', value: 'Skip the current song' })
         .addFields({name: '-queue', value: 'See the current queue'})
         .addFields({name: '-stop', value: 'Disconnect and clear queue'})

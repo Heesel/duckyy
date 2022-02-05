@@ -1,11 +1,12 @@
+
 module.exports = {
-    name: "play",
-    aliases: ["p"],
+    name: "playlist",
+    aliases: ["pl"],
     inVoiceChannel: true,
     run: async (client, message, args) => {
         try {
             const string = args.join(" ")
-            if (!string) return message.channel.send(`Please enter a song url or name to play a song.`)
+            if (!string) return message.channel.send(`Please enter a playlist url to start a playlist.`)
             let queue = client.player.createQueue(message.guild.id, {
                 data: {
                     channel: message.channel
@@ -13,7 +14,7 @@ module.exports = {
             });
             let guildQueue = client.player.getQueue(message.guild.id);
             await queue.join(message.member.voice.channel);
-            let song = await queue.play(string).catch(_ => {
+            let song = await queue.playlist(args.join(string)).catch(_ => {
                 if(!guildQueue)
                     queue.stop();
             });
