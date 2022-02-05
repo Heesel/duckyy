@@ -17,6 +17,8 @@ client.commands = new Discord.Collection()
 client.aliases = new Discord.Collection()
 client.player = player;
 
+
+
 fs.readdir("./commands/", (err, files) => {
     if (err) return console.log("Could not find any commands!")
     const jsFiles = files.filter(f => f.split(".").pop() === "js")
